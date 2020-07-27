@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Topics</title>
+  <link rel="stylesheet" href="topics.css"/>
+</head>
+
+<body>
+
+  <div id="topicapp">
+      <center><h1>Topics</h1></h1></center>
+
+<div id="main-container">
+    <div id="main">
+     <!--<a href="javascript:;" id="create-topic">Create a Topic</a>-->
+        <button id="create-topic">Create a Topic</button>
+     <ul id="topics-list"></ul>
+      <input id="toggle-all" type="checkbox">
+      <label for="toggle-all">Select all to delete</label>
+    </div>
+
+    <div id="container">
+
+        <div id="create-topic-form">
+        </div>
+
+    </div>
+</div>
+<div style="clear: both;"></div>
+    <footer>
+      <a id="clear-completed">Delete Items</a>
+      <div id="topic-count"></div>
+    </footer>
+
+  </div>
+<div id="footer-instrucations">
+  <div id="instructions">
+    Developed by Asim Bashir
+  </div>
+
+</div>
+  <script src="vendor/json2.js"></script>
+  <script src="vendor/jquery.js"></script>
+  <script src="vendor/underscore.js"></script>
+  <script src="backbone.js"></script>
+  <script src="backbone.localStorage.js"></script>
+  <script src="topic.js"></script>
+
+  <!-- Templates -->
+
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+        <label><a href="javascript:;" class="topic-name"><%- title %></a></label>
+      <a class="destroy"></a>
+    </div>
+    <!--<input class="edit" type="text" value="<%- title %>" />-->
+  </script>
+
+  <script type="text/template" id="item-template-edit">
+          <h5>Update the Topic Details</h5>
+
+          <label for="fname">Title</label>
+          <input type="text" id="update-topic-title" name="title" placeholder="Title" value="<%- title %>">
+
+          <label for="lname">Last Name</label>
+          <input type="text" id="update-topic-description" name="description" placeholder="Description" value="<%- description %>">
+
+          <input type="submit" value="Update"  id="<%- id %>" class="edit-topic">
+
+  </script>
+
+  <script type="text/template" id="item-template-create">
+
+      <h5>Enter the Topic Details</h5>
+
+          <label for="fname">Title</label>
+          <input type="text" id="new-topic" name="new-topic" placeholder="Title">
+
+          <label for="lname">Last Name</label>
+          <input type="text" id="new-topic-description" name="new-topic-description" placeholder="Description">
+
+          <input type="submit" value="Submit" id="save-topic">
+
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <% if (done) { %>
+      <a id="clear-completed">Delete <%= done %> selected <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <!--<div class="topic-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> selected</div>-->
+  </script>
+
+  </body>
+</html>
